@@ -30,7 +30,7 @@ void delivering(String payload) {
     Serial.println(payload);
     return;
   }
-  /* send to aws server database 'mydb' */
+  /* send to database 'mydb' through my ubuntu server*/
   String getheader = "GET "+ String(url) +"&"+ String(payload) +" HTTP/1.1";
   client.println(getheader);
   client.println("User-Agent: ESP8266 ChanYang Sim");  
