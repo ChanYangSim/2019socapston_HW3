@@ -1,3 +1,5 @@
+#include <login.h>
+
 #include <ESP8266WiFi.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -5,15 +7,15 @@
 
 OneWire ourWire(D3);
 DallasTemperature sensor(&ourWire);
-
-const char* host = "3.16.206.155";
+login login1;
+const char* host = login1.gethost();
 String url = "/data?";  
 const int httpPort = 8080;
 int seq=0;
 
-const char* ssid = "lol";   // Your own ssid here
-const char* password = "adminadmin";  // Your own password here
-String apiKey = "91INTCBCJOMQI4TL"; 
+const char* ssid = login1.getid();   // Your own ssid here
+const char* password = login1.getpw();  // Your own password here
+String apiKey = login1.getapi(); 
 
 String working() { 
   sensor.requestTemperatures();
